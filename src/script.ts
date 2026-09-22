@@ -1,7 +1,7 @@
 import {Parser} from "@cooklang/cooklang";
 
-const editor = document.querySelector('.editor textarea');
-const lineNumbers = document.querySelector('.line-numbers');
+const editor = document.querySelector('.editor textarea') as HTMLTextAreaElement;
+const lineNumbers = document.querySelector('.line-numbers') as HTMLElement;
 const measurement = document.createElement('div');
 
 measurement.setAttribute('aria-hidden', 'true');
@@ -28,7 +28,7 @@ function updateLineNumbers() {
         tabSize: styles.tabSize
     });
 
-    const visualLineNumbers = [];
+    const visualLineNumbers: number[] = [];
     editor.value.split('\n').forEach((line, index) => {
         measurement.textContent = line || '\u200b';
         const wrappedLines = Math.max(
@@ -52,11 +52,11 @@ updateLineNumbers();
 /* =========================================
     UPLOAD
 ========================================== */
-const uploadButton = document.querySelector('#uploadButton');
-const fileInput = document.querySelector('#fileInput');
+const uploadButton = document.querySelector('#uploadButton') as HTMLButtonElement;
+const fileInput = document.querySelector('#fileInput') as HTMLInputElement;
 
 function handleFileUpload() {
-    const file = fileInput.files[0];
+    const file = fileInput.files?.[0];
 
     if (!file) return;
 
@@ -64,7 +64,7 @@ function handleFileUpload() {
 
     reader.onload =
         function(event) {
-            editor.value = event.target.result;
+            editor.value = event.target?.result as string;
             updateLineNumbers();
             handleParseCooklang();
         };
@@ -81,14 +81,14 @@ function handleFileUpload() {
     reader.readAsText(file);
 }
 
-uploadButton.addEventListener("click", () => fileInput.click());
+uploadButton?.addEventListener("click", () => fileInput.click());
 
 fileInput.addEventListener("change", handleFileUpload);
 
 /* =========================================
     DOWNLOAD
 ========================================== */
-const downloadButton = document.querySelector('#downloadButton');
+const downloadButton = document.querySelector('#downloadButton') as HTMLButtonElement;
 
 function handleFileDownload() {
     const content = editor.value;
@@ -112,7 +112,7 @@ downloadButton.addEventListener("click", handleFileDownload);
 /* =========================================
     PARSE COOKLANG
 ========================================== */
-const outputElement = document.querySelector('#output');
+const outputElement = document.querySelector('#output') as HTMLElement;
 
 function handleParseCooklang() {
     const content = editor.value;
