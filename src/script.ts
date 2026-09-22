@@ -119,7 +119,7 @@ function handleParseCooklang() {
     window.sessionStorage.setItem("recipe", content);
     try {
         const parser = new Parser();
-        const {value, error} = parser.parse_render(
+        const {value} = parser.parse_render(
             content,
             null
         );
