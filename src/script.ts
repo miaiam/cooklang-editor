@@ -113,20 +113,25 @@ downloadButton.addEventListener("click", handleFileDownload);
     PARSE COOKLANG
 ========================================== */
 const outputElement = document.querySelector('#output') as HTMLElement;
+const errorsElement = document.querySelector('#errors') as HTMLElement;
+const errorsDetails = document.getElementById("errors-details") as HTMLDetailsElement;
 
 function handleParseCooklang() {
     const content = editor.value;
     window.sessionStorage.setItem("recipe", content);
     try {
         const parser = new Parser();
-        const {value} = parser.parse_render(
+        const {value, error} = parser.parse_render(
             content,
             null
         );
         outputElement.innerHTML = value;
+        errorsElement.innerHTML = error;
+
     } catch (error) {
         // outputElement.textContent = `Error parsing Cooklang: ${error.message}`;
     }
+    errorsDetails.open = errorsElement.childElementCount !== 0;
 }
 
 editor.addEventListener('input', () => {

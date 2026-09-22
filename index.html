@@ -49,15 +49,19 @@
 		
 
 		<div class="content">
-			<section class="column" aria-label="Code editor">
+			<section class="column panel" aria-label="Code editor">
 				<div class="editor">
 					<div class="line-numbers" aria-hidden="true"></div>
 					<textarea aria-label="Code editor" spellcheck="false"></textarea>
 				</div>
 			</section>
 
-			<section class="column text-content" aria-label="Cooklang preview">
-				<pre class="codeblock" id="output"></pre>
+			<section class="column preview" aria-label="Cooklang preview">
+				<pre class="codeblock panel" id="output"></pre>
+				<details id="errors-details" class="panel">
+                    <summary>Errors and warnings</summary>
+                    <pre class="codeblock" id="errors"></pre>
+                </details>
 			</section>
 		</div>
 	</main>
