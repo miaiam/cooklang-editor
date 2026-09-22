@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cooklang Playground</title>
+	<link rel="stylesheet" href="./src/styles.css"/>
+</head>
+<body>
+	<main class="page">
+		<header class="site-header">
+			<div class="brand">
+				<div class="brand-icon">
+					&lt;/&gt;
+				</div>
+				<div class="brand-text">
+					<div class="brand-title">
+						Cooklang Playground
+					</div>
+					<!-- <div class="brand-subtitle">
+						Cooklang Playground
+					</div> -->
+				</div>
+			</div>
+			<div class="toolbar-actions">
+				<input
+					type="file"
+					id="fileInput"
+					accept=".cook"
+					hidden
+				>
+
+				<button id="uploadButton">
+					<span class="button-icon">↑</span>
+					Upload
+				</button>
+
+				<button
+					id="downloadButton"
+					class="download-button"
+				>
+					<span class="button-icon">↓</span>
+					Download
+				</button>
+
+			</div>
+		</header>
+
+		
+
+		<div class="content">
+			<section class="column" aria-label="Code editor">
+				<div class="editor">
+					<div class="line-numbers" aria-hidden="true"></div>
+					<textarea aria-label="Code editor" spellcheck="false"></textarea>
+				</div>
+			</section>
+
+			<section class="column text-content" aria-label="Cooklang preview">
+				<pre class="codeblock" id="output"></pre>
+			</section>
+		</div>
+	</main>
+
+	<script type="module" src="./src/script.js"></script>
+
+</body>
+</html>
